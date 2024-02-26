@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 
 public class PersonalDataTest {
 
-    private Logger logger ;
+    private Logger logger;
     private WebDriver driver;
     protected Faker faker = new Faker();
 

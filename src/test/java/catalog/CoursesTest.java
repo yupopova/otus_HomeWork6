@@ -31,6 +31,7 @@ public class CoursesTest {
 
         this.catalogCoursesPage = new CatalogCoursesPage(driver);
         catalogCoursesPage.open(queryParams);
+        logger.info("Open catalog of courses");
     }
 
     @AfterEach
@@ -44,6 +45,7 @@ public class CoursesTest {
     @Test
     public void CoursesTileNumbers() {
         catalogCoursesPage.coursesTilesNumberShouldBeSameAs(10);
+        logger.info("Number of courses is calculated");
     }
 
     @Test
@@ -52,14 +54,17 @@ public class CoursesTest {
             String expectedHeader = catalogCoursesPage.getCourseNameByIndex(i);
             String expectedCourseDuration = catalogCoursesPage.getCourseDuration(i);
             catalogCoursesPage.checkHeaderCourseByIndex(i, expectedHeader);
+            logger.info("Header of courses  is checked");
             catalogCoursesPage.checkDescriptionCourseByIndex(i);
+            logger.info("Description of courses is checked");
             catalogCoursesPage.checkCourseDuration(i, expectedCourseDuration);
+            logger.info("Duration of courses is checked");
             catalogCoursesPage.checkCourseFormat(i, "Онлайн");
         }
 
-        catalogCoursesPage.clickRandomCourseTile();
+        String expectedHeaderCourse = catalogCoursesPage.clickRandomCourseTile();
         DetailsCoursePage detailsCoursePage = new DetailsCoursePage(driver, "");
-       // detailsCoursePage.checkTitleCourse()
-
+        detailsCoursePage.checkTitleCourse(expectedHeaderCourse);
+        detailsCoursePage.checkDetailsCardCourse("Онлайн");
     }
 }

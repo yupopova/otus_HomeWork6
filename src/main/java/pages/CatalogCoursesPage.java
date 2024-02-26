@@ -47,9 +47,10 @@ public class CatalogCoursesPage extends AbsBasePage {
                         By.xpath("//section//div[not(@style)]/a[contains(@href, '/lessons/')]/h6/div[contains(text(), '"
                                 + expectedHeaderCourse + "')]"));
                 randomCardCourse.click();
+                logger.info("Random course is checked");
             }
         } else {
-            System.out.println("Список курсов пустой");
+            System.out.println("List of courses is empty");
         }
         return expectedHeaderCourse;
     }

@@ -16,6 +16,10 @@ import pages.MainPage;
 import pages.PersonalCabinetPage;
 import pages.PersonalPage;
 
+import java.io.IOException;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public class PersonalDataTest {
 
     private Logger logger ;
@@ -38,50 +42,38 @@ public class PersonalDataTest {
     }
 
     @Test
-    public void inputPersonalDataTest() {
-        new MainPage(driver).open("/");
-        logger.info("Open main page");
-        Header header = new Header(driver);
-        SignInPopup signInPopup = new SignInPopup(driver);
-        signInPopup.popupShouldNotBeVisible();
-
-        header.auth();
-        signInPopup.popupShouldBeVisible();
-        signInPopup.inputLogin();
-        signInPopup.inputPassword();
-        signInPopup.clickSignInButton();
-
-        header.checkForUserSignIn();
-        header.openUserMenu();
-        header.openPersonalCabinet();
-
-        PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage(driver);
-        personalCabinetPage.openMenuAboutMe();
-
+    public void PersonalDataTest() throws IOException {
+        auth();
         PersonalPage personalPage = new PersonalPage(driver);
-
         personalPage.clearFieldsOfPersonalData(PersonalData.FNAME);
-        personalPage.inputFieldsOfPersonalData(PersonalData.FNAME, "Тест");
+        personalPage.inputFieldsOfPersonalData(PersonalData.FNAME, faker.name().firstName());
+        String fname = personalPage.getFieldValueOfPersonalData (PersonalData.FNAME);
         logger.info("Successful input FIRSTNAME");
 
         personalPage.clearFieldsOfPersonalData(PersonalData.FNAME_LATIN);
-        personalPage.inputFieldsOfPersonalData(PersonalData.FNAME_LATIN, "Test");
+        personalPage.inputFieldsOfPersonalData(PersonalData.FNAME_LATIN, faker.name().firstName());
+        String fname_latin = personalPage.getFieldValueOfPersonalData (PersonalData.FNAME_LATIN);
         logger.info("Successful input LATIN FIRSTNAME");
 
         personalPage.clearFieldsOfPersonalData(PersonalData.LNAME);
-        personalPage.inputFieldsOfPersonalData(PersonalData.LNAME, "Тестовин");
+        personalPage.inputFieldsOfPersonalData(PersonalData.LNAME, faker.name().lastName());
+        String lname = personalPage.getFieldValueOfPersonalData (PersonalData.LNAME);
         logger.info("Successful input FIRST LASTNAME");
 
         personalPage.clearFieldsOfPersonalData(PersonalData.LNAME_LATIN);
-        personalPage.inputFieldsOfPersonalData(PersonalData.LNAME_LATIN, "Testovin");
+        personalPage.inputFieldsOfPersonalData(PersonalData.LNAME_LATIN, faker.name().lastName());
+        String lname_latin = personalPage.getFieldValueOfPersonalData (PersonalData.LNAME_LATIN);
         logger.info("Successful input LATIN LASTNAME");
 
         personalPage.clearFieldsOfPersonalData(PersonalData.BLOG_NAME);
-        personalPage.inputFieldsOfPersonalData(PersonalData.BLOG_NAME, "Blog_name");
+        personalPage.inputFieldsOfPersonalData(PersonalData.BLOG_NAME, faker.name().name());
+        String blog_name = personalPage.getFieldValueOfPersonalData (PersonalData.BLOG_NAME);
         logger.info("Successful input BLOGNAME");
 
         personalPage.clearFieldsOfPersonalData(PersonalData.DATE_OF_BIRTH);
-        personalPage.inputFieldsOfPersonalData(PersonalData.DATE_OF_BIRTH, "01.01.2000");
+        personalPage.inputFieldsOfPersonalData(PersonalData.DATE_OF_BIRTH, faker.date().birthday().toInstant().atZone(ZoneId.
+                systemDefault()).toLocalDate().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        String date_of_birth = personalPage.getFieldValueOfPersonalData (PersonalData.DATE_OF_BIRTH);
         logger.info("Successful input DATE OF BIRTH");
 
         ICityData[] cityData = RussiaCityData.values();
@@ -92,14 +84,44 @@ public class PersonalDataTest {
 
         personalPage.selectEnglishLevel(EnglishLevel.INTERMEDIATE);
 
-        personalPage.addContacts(PersonalData.CONTACT0VALUE, PersonalData.CONTACT1VALUE, "@Test_telegram", "+79998887766");
-
+        personalPage.deleteContacts();
         personalPage.clickButtonSavePersonalData();
 
-    }
+        PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage(driver);
+        personalCabinetPage.openMenuAboutMe();
+        personalPage.addContactClick();
+        personalPage.addContact(PersonalData.TELEGRAM, faker.name().username());
+        String telegram = personalPage.getFieldValueOfContact();
 
-    @Test
-    public void verifyPersonalDataTest() {
+        personalPage.clickButtonSavePersonalData();
+        Header header = new Header(driver);
+        header.exitFromOtus();
+        driver.close();
+        logger.info("Close driver");
+
+        driver = new DriverFactory().create();
+        logger.info("Start driver");
+        auth();
+        PersonalPage personalPageVerify = new PersonalPage(driver);
+
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.FNAME, fname);
+        logger.info("Firstname is check");
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.FNAME_LATIN, fname_latin);
+        logger.info("Latin Firstname is check");
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.LNAME, lname);
+        logger.info("Lastname is check");
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.LNAME_LATIN, lname_latin);
+        logger.info("Latin Lastname is check");
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.BLOG_NAME, blog_name);
+        logger.info("Blog_name is check");
+        personalPageVerify.checkFieldsOfPersonalData(PersonalData.DATE_OF_BIRTH, date_of_birth);
+        logger.info("Date of birth is check");
+        personalPageVerify.checkFieldsOfContacts(telegram);
+        logger.info("Telegram is check");
+        logger.info("Successful check of Personal Data");
+   }
+
+    private void auth() {
         new MainPage(driver).open("/");
         logger.info("Open main page");
         Header header = new Header(driver);
@@ -118,25 +140,5 @@ public class PersonalDataTest {
 
         PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage(driver);
         personalCabinetPage.openMenuAboutMe();
-
-        PersonalPage personalPage = new PersonalPage(driver);
-
-        personalPage.checkFieldsOfPersonalData(PersonalData.FNAME, "Тест");
-        logger.info("Firstname is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.FNAME_LATIN, "Test");
-        logger.info("Latin Firstname is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.LNAME, "Тестовин");
-        logger.info("Lastname is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.LNAME_LATIN, "Testovin");
-        logger.info("Latin Lastname is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.BLOG_NAME, "Blog_name");
-        logger.info("Blog_name is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.DATE_OF_BIRTH, "01.01.2000");
-        logger.info("Date of birth is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.CONTACT0VALUE, "@Test_telegram");
-        logger.info("Telegram is check");
-        personalPage.checkFieldsOfPersonalData(PersonalData.CONTACT1VALUE, "+79998887766");
-        logger.info("WhatsApp is check");
-        logger.info("Successful check of Personal Data");
-   }
+    }
 }

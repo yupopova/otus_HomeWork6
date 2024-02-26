@@ -8,6 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
+import java.util.List;
+
 public class PersonalPage extends AbsBasePage {
 
     public PersonalPage(WebDriver driver) {
@@ -23,6 +26,11 @@ public class PersonalPage extends AbsBasePage {
     public void inputFieldsOfPersonalData(PersonalData personalData, String data) {
         driver.findElement(By.cssSelector(String.format("input[name='%s']", personalData.getName())))
                 .sendKeys(data);
+    }
+
+    public String getFieldValueOfPersonalData (PersonalData personalData) {
+        return driver.findElement(By.cssSelector(String.format("input[name='%s']",
+                personalData.getName()))).getAttribute("value");
     }
 
     public void selectCountry(ICityData cityData) {
@@ -61,23 +69,32 @@ public class PersonalPage extends AbsBasePage {
         logger.info("Level of English selected");
     }
 
-    public void addContacts(PersonalData personalData1, PersonalData personalData2, String data1, String data2) {
-        String addContactLocator = "//*[contains(@class, 'placeholder')][.='Способ связи']";
-        if (!driver.findElements(By.xpath(addContactLocator)).isEmpty()) {
-            driver.findElement(By.xpath(addContactLocator)).click();
-            driver.findElement(By.xpath("//button[@title='Тelegram']")).click();
-            driver.findElement(By.cssSelector(String.format("input[name='%s']", personalData1.getName())))
-                    .sendKeys(data1);
-            logger.info("Telegram entered");
-            driver.findElement(By.xpath("//button[.='Добавить']")).click();
-            driver.findElement(By.xpath(addContactLocator)).click();
-            driver.findElement(By.xpath("(//*[contains(@class, 'lk-cv-block__select-option_selected')][@title='WhatsApp']")).click();
-            driver.findElement(By.cssSelector(String.format("input[name='%s']", personalData2.getName())))
-                    .sendKeys(data2);
-            logger.info("WhatsApp entered");
-        } else {
-            logger.info("Contacts already exists");
+    public void deleteContacts() throws IOException {
+        List<WebElement> buttonsDelete = driver.findElements(By.cssSelector("[class*='delete']"));
+        for (int i = 0; i < buttonsDelete.size(); i++) {
+            if (buttonsDelete.get(i).isDisplayed()) {
+                buttonsDelete.get(i).click();
+            }
         }
+    }
+
+    public void addContactClick() {
+        driver.findElement(By.xpath("//button[.='Добавить']")).click();
+    }
+
+    public void addContact(PersonalData personalData, String value) {
+        String addContactLocator = "//*[contains(@class, 'placeholder')][.='Способ связи']";
+        driver.findElement(By.xpath(addContactLocator)).click();
+        driver.findElement(By.xpath(String.format("//button[@title='%s']", personalData.getName()))).click();
+            WebElement fieldContact = driver.findElement(By.id("id_contact-0-value"));
+            fieldContact.click();
+            fieldContact.sendKeys(value);
+            logger.info("Contact entered");
+    }
+
+    public String getFieldValueOfContact () {
+        String value = driver.findElement(By.id("id_contact-0-value")).getAttribute("value");
+        return value;
     }
 
     public void clickButtonSavePersonalData() {
@@ -87,8 +104,13 @@ public class PersonalPage extends AbsBasePage {
         logger.info("Successful save of Personal Data");
     }
 
-       public void checkFieldsOfPersonalData (PersonalData personalData, String data) {
+    public void checkFieldsOfPersonalData (PersonalData personalData, String data) {
         Assertions.assertEquals(driver.findElement(By.cssSelector(String.format("input[name='%s']",
-                        personalData.getName()))).getAttribute("value"), data);
+                personalData.getName()))).getAttribute("value"), data);
+   }
+
+    public void checkFieldsOfContacts (String data) {
+        Assertions.assertEquals(driver.findElement(By.id("id_contact-0-value")).getAttribute("value"), data);
     }
+
 }

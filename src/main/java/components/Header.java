@@ -10,8 +10,9 @@ public class Header extends AbsCommon {
 
     private String signInButtonLocator = "//button[text()='Войти']";
     private String userMenuSelector = "img[src*='blue-owl']";
-    private String UserMenuLocator = "//div[@class='sc-r03h0s-5 sc-1youhxc-2 bYKNcH imWQF sc-1og4wiw-0-Component fgPsmr']";
-    private String PersonalCabinetLocator ="//*[contains(@href, 'learning')][.='Личный кабинет']";
+    private String userMenuLocator = "//*[contains(@class, 'Component fgPsmr')]";
+    private String personalCabinetLocator ="//*[contains(@href, 'learning')][.='Личный кабинет']";
+    private String exitLocator= "//*[contains(@class, 'logout')]";
 
     public Header(WebDriver driver) {
         super(driver);
@@ -31,20 +32,28 @@ public class Header extends AbsCommon {
     }
 
     public void openUserMenu() {
-        waitTools.waitElementPresent(By.xpath(UserMenuLocator));
-        waitTools.waitElementToBeClicable(By.xpath(UserMenuLocator));
+        waitTools.waitElementPresent(By.xpath(userMenuLocator));
+        waitTools.waitElementToBeClicable(By.xpath(userMenuLocator));
 
-        WebElement UserMenu = driver.findElement(By.xpath(UserMenuLocator));
+        WebElement UserMenu = driver.findElement(By.xpath(userMenuLocator));
         UserMenu.click();
         logger.info("User menu is open");
     }
 
     public void openPersonalCabinet() {
-        waitTools.waitElementPresent(By.xpath(PersonalCabinetLocator));
-        waitTools.waitElementToBeClicable(By.xpath(PersonalCabinetLocator));
+        waitTools.waitElementPresent(By.xpath(personalCabinetLocator));
+        waitTools.waitElementToBeClicable(By.xpath(personalCabinetLocator));
 
-        WebElement PersonalCabinet = driver.findElement(By.xpath(PersonalCabinetLocator));
+        WebElement PersonalCabinet = driver.findElement(By.xpath(personalCabinetLocator));
         PersonalCabinet.click();
         logger.info("Personal cabinet is open");
+    }
+
+    public void exitFromOtus() {
+        WebElement UserMenu = driver.findElement(By.cssSelector(userMenuSelector));
+        UserMenu.click();
+        WebElement exit = driver.findElement((By.xpath(exitLocator)));
+        exit.click();
+        logger.info("Successful logout");
     }
 }

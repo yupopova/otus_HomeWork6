@@ -4,14 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9a146b0-478d-4a63-b58c-432c9799c4a9" name="Changes" comment="otus_HomeWork6">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Header.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Header.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/personalData/PersonalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/personalData/PersonalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/CatalogCoursesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/CatalogCoursesPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java" afterDir="false" />
+    <list default="true" id="b9a146b0-478d-4a63-b58c-432c9799c4a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/common/AbsCommon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Header.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/popups/IPopup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/popups/SignInPopup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/catalog/LessonsCategoryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/cities/CountriesData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/cities/ICityData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/cities/RussiaCityData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/englishLevel/EnglishLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/englishLevel/IEnglishLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/events/EventTypeData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/personalData/PersonalData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/BrowserNotSupportedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/factory/DriverFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/factory/impl/ChromeDriverSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/factory/impl/FirefoxDriverSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/factory/impl/IDriverSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/AbsBasePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/CalendarEventsPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/CatalogCoursesPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/DetailsCoursePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/MainPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalCabinetPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pages/PersonalPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tools/WaitTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/events/EventsPageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +75,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/YPopova/IdeaProjects/Otus_HomeWork6/src/test/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/YPopova/IdeaProjects/Otus_HomeWork6&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2850575&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_directory_selection": "C:/Users/YPopova/IdeaProjects/Otus_HomeWork6/src/test/java",
+    "last_opened_file_path": "C:/Users/YPopova/IdeaProjects/Otus_HomeWork6",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2850575"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\YPopova\IdeaProjects\Otus_HomeWork6\src\main\resources" />
@@ -67,7 +95,7 @@
       <recent name="common" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.PersonalDataTest2">
+  <component name="RunManager" selected="Maven.verifyPersonalDataTest">
     <configuration name="CoursesTest" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -188,7 +216,7 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="PersonalDataTest" type="MavenRunConfiguration" factoryName="Maven">
+    <configuration name="inputPersonalDataTest" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -210,7 +238,7 @@
                 <option value="-D" />
                 <option value="forkCount=0" />
                 <option value="-D" />
-                <option value="test=PersonalDataTest" />
+                <option value="test=PersonalDataTest#inputPersonalDataTest" />
               </list>
             </option>
             <option name="pomFileName" />
@@ -224,7 +252,7 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
-    <configuration name="PersonalDataTest2" type="MavenRunConfiguration" factoryName="Maven">
+    <configuration name="verifyPersonalDataTest" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -240,13 +268,13 @@
                 <option value="-D" />
                 <option value="browser.name=chrome" />
                 <option value="-D" />
-                <option value="login=Uxy.strange36@gmail.com" />
+                <option value="login=uxy.strange@mail.ru" />
                 <option value="-D" />
-                <option value="password=8%6gd!$ry7T" />
+                <option value="password=NewLife18" />
                 <option value="-D" />
                 <option value="forkCount=0" />
                 <option value="-D" />
-                <option value="test=PersonalDataTest" />
+                <option value="test=PersonalDataTest#verifyPersonalDataTest" />
               </list>
             </option>
             <option name="pomFileName" />
@@ -265,8 +293,8 @@
       <item itemvalue="Maven.CoursesTest#checkDataOnCoursesPage" />
       <item itemvalue="Maven.CoursesTest" />
       <item itemvalue="Maven.EventsPageTest" />
-      <item itemvalue="Maven.PersonalDataTest" />
-      <item itemvalue="Maven.PersonalDataTest2" />
+      <item itemvalue="Maven.inputPersonalDataTest" />
+      <item itemvalue="Maven.verifyPersonalDataTest" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -278,14 +306,6 @@
       <option name="presentableId" value="Default" />
       <updated>1707070868027</updated>
     </task>
-    <task id="LOCAL-00001" summary="otus_HomeWork6">
-      <created>1708823365103</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1708823365103</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,57 +319,18 @@
       </map>
     </option>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="otus_HomeWork6" />
-    <option name="LAST_COMMIT_MESSAGE" value="otus_HomeWork6" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pages/PersonalPage.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/components/Header.java</url>
           <line>29</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="62" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pages/PersonalPage.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="63" />
+          <line>42</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

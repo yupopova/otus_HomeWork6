@@ -31,11 +31,6 @@ public class WaitTools {
         return this.waitForCondition(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public boolean waitNotElementPresent(By locator) {
-       return this.waitForCondition(ExpectedConditions.
-               not(ExpectedConditions.presenceOfElementLocated(locator)));
-    }
-
     public boolean waitElementToBeClicable(By locator) {
         return this.waitForCondition(ExpectedConditions.elementToBeClickable(locator));
     }

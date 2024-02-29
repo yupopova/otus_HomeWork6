@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9a146b0-478d-4a63-b58c-432c9799c4a9" name="Changes" comment="otus_HomeWork6">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Header.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/popups/IPopup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/popups/SignInPopup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/cities/CountriesData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/cities/ICityData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/cities/RussiaCityData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/englishLevel/EnglishLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/englishLevel/IEnglishLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/personalData/PersonalData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/CalendarEventsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/CalendarEventsPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/CatalogCoursesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/CatalogCoursesPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/DetailsCoursePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/DetailsCoursePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalCabinetPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages/PersonalPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/catalog/CoursesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/events/EventsPageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/events/EventsPageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/personal/PersonalDataTest.java" beforeDir="false" />
-    </list>
+    <list default="true" id="b9a146b0-478d-4a63-b58c-432c9799c4a9" name="Changes" comment="otus_HomeWork6" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708985142395</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="otus_HomeWork6">
+      <created>1709168786819</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709168786819</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

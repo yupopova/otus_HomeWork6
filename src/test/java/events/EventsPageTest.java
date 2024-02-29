@@ -23,7 +23,7 @@ public class EventsPageTest {
         logger.info("Start driver");
 
         this.calendarEventsPage = new CalendarEventsPage(driver);
-        calendarEventsPage.open();
+        calendarEventsPage.open("/events/near/");
     }
 
     @AfterEach
@@ -35,17 +35,21 @@ public class EventsPageTest {
     }
 
     @Test
-    public void eventsTiles() {
-        calendarEventsPage
-                .checkEventsTylesShouldBeVisible()
-                .checkStartEventDate();
-    }
-
-    @Test
-    public void selectEventsOfType() {
-        calendarEventsPage
-                .selectSortedEventsType(EventTypeData.OPEN)
-                .checkEventsTylesShouldBeVisible()
-                .checkEventsType(EventTypeData.OPEN);
+    public void eventsPageTest() {
+        // Проверка отображения ближайших мероприятий в календаре
+        calendarEventsPage.checkEventsTylesShouldBeVisible();
+        logger.info("Events is visible");
+        // Проверка, что даты мероприятий больше или равны текущей дате
+        calendarEventsPage.checkStartEventDate();
+        logger.info("Date of events is later than today");
+        // Сортировка мероприятий по типу Открытые вебинары
+        calendarEventsPage.selectSortedEventsType(EventTypeData.OPEN);
+        logger.info("Success sorted events by type OPEN WEBINAR");
+        // Проверка отображения ближайших мероприятий в календаре
+        calendarEventsPage.checkEventsTylesShouldBeVisible();
+        logger.info("Events is visible");
+        // Проверка отображения типа "Открытый вебинар" на всех карточках мероприятий
+        calendarEventsPage.checkEventsType(EventTypeData.OPEN);
+        logger.info("All of events have type 'OPEN WEBINAR'");
     }
 }

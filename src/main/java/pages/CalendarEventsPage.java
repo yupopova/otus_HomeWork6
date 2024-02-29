@@ -32,7 +32,8 @@ public class CalendarEventsPage extends AbsBasePage {
     private String dropdownSortingEventsItemTemplate = dropdownEventsListSelector + " [title='%s']";
 
     public CalendarEventsPage checkEventsTylesShouldBeVisible() {
-        Assertions.assertTrue(waitTools.waitForCondition(ExpectedConditions.visibilityOfAllElements(eventTiles)));
+        Assertions.assertTrue(waitTools.waitForCondition(ExpectedConditions.visibilityOfAllElements(eventTiles)),
+                "Events is not visible");
 
         return this;
     }
@@ -41,40 +42,33 @@ public class CalendarEventsPage extends AbsBasePage {
         for(WebElement dateEvent: dateEvents) {
             LocalDate currentDate = LocalDate.now();
 
-            Pattern pattern = Pattern.compile("\\d+\\s+\\[а-яА-Я]+\\s+\\d{4}");
+            Pattern pattern = Pattern.compile("\\d+\\s+[а-яА-Я]+\\s+\\d{4}");
             String dateEventStr = dateEvent.getText();
-            Matcher matcher = pattern.matcher(dateEvent.getText());
+            Matcher matcher = pattern.matcher(dateEventStr);
             if(!matcher.find()) {
                 dateEventStr += String.format(" %d", currentDate.getYear());
             }
-            LocalDate eventDate = LocalDate
-                    .parse(dateEventStr, DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.of("ru")));
+            LocalDate eventDate = LocalDate.parse(dateEventStr, DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.of("ru")));
 
-            Assertions.assertTrue(
-                    eventDate.isAfter(currentDate) || eventDate.isEqual(currentDate),
-                    "Error");
+            Assertions.assertTrue(eventDate.isAfter(currentDate) || eventDate.isEqual(currentDate),
+                    "Date of event is earlier than today");
         }
         return this;
     }
 
     private CalendarEventsPage dropdownSortingEventsShouldNotBeOpened() {
-        Assertions.assertTrue(
-                waitTools.waitForCondition(
-                        ExpectedConditions.not(ExpectedConditions.attributeContains(
+        Assertions.assertTrue(waitTools.waitForCondition(ExpectedConditions.not(ExpectedConditions.attributeContains(
                                 $(dropdownSortingEventsListSelector),
                                 "class",
-                                "dod_new-events-dropdown_opened"))
-                )
-        );
+                                "dod_new-events-dropdown_opened"))), "Dropdown Sorting Events is open");
         return this;
     }
 
     private CalendarEventsPage dropdownSortingEventsShouldBeOpened() {
         Assertions.assertTrue(
                 waitTools.waitForCondition((ExpectedConditions.attributeContains(
-                        $(dropdownSortingEventsListSelector), "class", "dod_new-events-dropdown_opened"))
-                )
-        );
+                        $(dropdownSortingEventsListSelector), "class", "dod_new-events-dropdown_opened"))),
+                "Dropdown Sorting Events is not open");
         return this;
     }
 
@@ -85,7 +79,7 @@ public class CalendarEventsPage extends AbsBasePage {
     }
 
     private CalendarEventsPage sortingItemsShouldBeVisible() {
-        Assertions.assertTrue(waitTools.waitElementVisible($(dropdownEventsListSelector)));
+        Assertions.assertTrue(waitTools.waitElementVisible($(dropdownEventsListSelector)), "Sorting Items is not visible" );
 
         return this;
     }
@@ -108,7 +102,7 @@ public class CalendarEventsPage extends AbsBasePage {
 
     public CalendarEventsPage checkEventsType(EventTypeData eventTypeData) {
         for(WebElement element: eventsTypeIcon) {
-            Assertions.assertEquals(eventTypeData.getName(), element.getText(),"error");
+            Assertions.assertEquals(eventTypeData.getName(), element.getText(), "Type on one of event is not 'OPEN WEBINAR'");
         }
         return this;
     }

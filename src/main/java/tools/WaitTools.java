@@ -27,15 +27,6 @@ public class WaitTools {
         }
     }
 
-    public boolean waitElementPresent(By locator) {
-        return this.waitForCondition(ExpectedConditions.presenceOfElementLocated(locator));
-    }
-
-    public boolean waitNotElementPresent(By locator) {
-       return this.waitForCondition(ExpectedConditions.
-               not(ExpectedConditions.presenceOfElementLocated(locator)));
-    }
-
     public boolean waitElementToBeClicable(By locator) {
         return this.waitForCondition(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -44,17 +35,4 @@ public class WaitTools {
         return this.waitForCondition(ExpectedConditions.visibilityOf(element));
     }
 
-    public boolean waitNotElementOfVisibilityLocated(By locator) {
-        return this.waitForCondition(ExpectedConditions.
-                not(ExpectedConditions.visibilityOfElementLocated(locator)));
-    }
-
-    public boolean waitAttributeContains(WebElement element, String atribut1, String atribut2) {
-        return this.waitForCondition(ExpectedConditions.attributeContains(element, atribut1, atribut2));
-    }
-
-    public boolean waitNotAttributeContains(WebElement element, String atribut1, String atribut2) {
-        return this.waitForCondition(ExpectedConditions.not(ExpectedConditions
-                .attributeContains(element, atribut1, atribut2)));
-    }
 }

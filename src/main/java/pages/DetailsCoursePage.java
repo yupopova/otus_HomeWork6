@@ -1,7 +1,6 @@
 package pages;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,41 +12,42 @@ public class DetailsCoursePage extends AbsBasePage {
     }
 
     @FindBy(xpath = "//h1[contains(text(), '')]")
-    private WebElement titleCardCourse;
+    private WebElement titleCardCourseLocator;
 
     @FindBy(xpath = "//div/following-sibling::p[contains(text(), 'месяц')]")
-    private WebElement durationCourse;
+    private WebElement durationCardCourseLocator;
 
-    @FindBy(xpath = "//h1/following-sibling::div[contains(text(), '')]/p")
+    @FindBy(xpath = "//h1/following-sibling::div[contains(text(), '')]")
     private WebElement descriptionCardCourseLocator;
 
+    @FindBy(xpath = "//p[contains(text(), 'Онлайн')]")
+    private WebElement formatCardCourseLocator;
+
     public void checkTitleCourse(String expectedTitleCourse) {
-        String result = titleCardCourse.getText();
-        Assertions.assertEquals(expectedTitleCourse, result);
+        String result = titleCardCourseLocator.getText();
+        Assertions.assertEquals(expectedTitleCourse, result, "Title of course is empty");
     }
 
     private DetailsCoursePage checkDescriptionCourseIsNotEmpty() {
         String descriptionCardCourse = descriptionCardCourseLocator.getText();
-        Assertions.assertFalse(descriptionCardCourse.isEmpty());
+        Assertions.assertFalse(descriptionCardCourse.isEmpty(), "Description of course is empty");
         return this;
     }
 
     private DetailsCoursePage checkDurationCourseIsNotEmpty() {
-        Assertions.assertFalse(durationCourse.getText().isEmpty());
+        Assertions.assertFalse(durationCardCourseLocator.getText().isEmpty(), "Duration of course is empty");
         return this;
     }
 
-    private DetailsCoursePage checkFormatCourse(String format) {
-        String formatCourse = driver.findElement(By.xpath(String.format("//p[contains(text(), '%s')]", format))).getText();
-        Assertions.assertEquals(formatCourse.isEmpty(), "Description courses empty");
-
+    private DetailsCoursePage checkFormatCourse() {
+        Assertions.assertFalse(formatCardCourseLocator.getText().isEmpty(), "Format of course is empty");
         return this;
     }
 
-    public DetailsCoursePage checkDetailsCardCourse(String format) {
+    public DetailsCoursePage checkDetailsCardCourse() {
         this.checkDescriptionCourseIsNotEmpty()
                 .checkDurationCourseIsNotEmpty()
-                .checkFormatCourse(format);
+                .checkFormatCourse();
 
         return this;
     }

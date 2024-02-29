@@ -39,6 +39,8 @@ public class CatalogCoursesPage extends AbsBasePage {
         if(coursesTiles.size() > 0) {
             WebElement randomCardCourse = faker.options().nextElement(coursesTiles);
             expectedHeaderCourse = randomCardCourse.findElement(By.xpath(".//h6")).getText();
+            waitTools.waitElementVisible(randomCardCourse);
+            waitTools.waitElementToBeClicable(By.xpath(".//h6"));
 
             try {
                 randomCardCourse.click();

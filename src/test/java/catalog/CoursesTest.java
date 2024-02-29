@@ -43,28 +43,42 @@ public class CoursesTest {
     }
 
     @Test
-    public void CoursesTileNumbers() {
-        catalogCoursesPage.coursesTilesNumberShouldBeSameAs(10);
-        logger.info("Number of courses is calculated");
-    }
+    public void checkDataOnCoursesPageTest() throws IOException {
+        CoursesTileNumbers(); // Проверка количества курсов в разделе Тестирование
 
-    @Test
-    public void checkDataOnCoursesPage() throws IOException {
+        // Проверка информации о каждом курсе в каталоге курсов
         for(int i = 1; i < catalogCoursesPage.getCoursesNumber(); i++) {
+            // Проверка названия
             String expectedHeader = catalogCoursesPage.getCourseNameByIndex(i);
-            String expectedCourseDuration = catalogCoursesPage.getCourseDuration(i);
             catalogCoursesPage.checkHeaderCourseByIndex(i, expectedHeader);
-            logger.info("Header of courses  is checked");
+            logger.info(String.format("Header of course '%s' is checked - '%s'", i, expectedHeader));
+            // Проверка описания
             catalogCoursesPage.checkDescriptionCourseByIndex(i);
-            logger.info("Description of courses is checked");
+            logger.info(String.format("Description of course '%s' is checked", i));
+            // Проверка длительности обучения
+            String expectedCourseDuration = catalogCoursesPage.getCourseDuration(i);
             catalogCoursesPage.checkCourseDuration(i, expectedCourseDuration);
-            logger.info("Duration of courses is checked");
+            logger.info(String.format("Duration of course '%s' is checked", i));
+            // Проверка формата обучения
             catalogCoursesPage.checkCourseFormat(i, "Онлайн");
+            logger.info(String.format("Format of course '%s' is checked", i));
         }
-
-        String expectedHeaderCourse = catalogCoursesPage.clickRandomCourseTile();
+        // Переход на рандомную карточку курса
+        String expectedHeaderRandomCourse = catalogCoursesPage.clickRandomCourseTile();
         DetailsCoursePage detailsCoursePage = new DetailsCoursePage(driver, "");
-        detailsCoursePage.checkTitleCourse(expectedHeaderCourse);
-        detailsCoursePage.checkDetailsCardCourse("Онлайн");
+        logger.info(String.format("Details of course '%s' is opened", expectedHeaderRandomCourse));
+        // Проверка карточки курса
+        // Проверка названия
+        detailsCoursePage.checkTitleCourse(expectedHeaderRandomCourse);
+        logger.info("Header of course is checked");
+        // Проверка описания, длительности и формата обучения
+        detailsCoursePage.checkDetailsCardCourse();
+        logger.info("Description, duration and format of course is checked");
     }
+
+    private void CoursesTileNumbers() {
+        catalogCoursesPage.coursesTilesNumberShouldBeSameAs(10);
+        logger.info("Number of courses is calculated and it is 10");
+    }
+
 }
